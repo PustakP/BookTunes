@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pustaksong</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Righteous&display=swap" rel="stylesheet">
+  <style>
+           h1{font-family: 'Righteous', cursive;}    
+    body{font-family: 'Lilita One', cursive;
+         background-color: #FFFDD0;
+         color: #9C6137;
+}
+    
+    button{
+                    outline: 0;
+                    grid-gap: 8px;
+                    align-items: center;
+                    background: 0 0;
+                    border: 1px solid #000;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    display: inline-flex;
+                    flex-shrink: 0;
+                    font-size: 16px;
+                    gap: 8px;
+                    justify-content: center;
+                    line-height: 1.5;
+                    overflow: hidden;
+                    padding: 12px 16px;
+                    text-decoration: none;
+                    text-overflow: ellipsis;
+                    transition: all .14s ease-out;
+                    white-space: nowrap; }
+                     button:hover {
+                        box-shadow: 4px 4px 0 #000;
+                        transform: translate(-4px,-4px);
+                    }
+                     button:focus-visible{
+                        outline-offset: 1px;
+                    }
+              
+                </style>
+</head>
+
+<body class="stackedit">
+ <center> <div class="stackedit__html"><h1 id="ok-so-hi"><strong>Here you go !</strong></strong></h1>
+
+{% for item in reco %}
+<p>{{ item }}</p>
+{% endfor %}
+   
+<br>
+ 
+   <br><br>
+
+  <button onClick="location.href='/'">Another One ?</button>
+</center>
+  
+</div>
+</body>
+
+</html>
