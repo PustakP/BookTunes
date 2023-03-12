@@ -40,7 +40,7 @@ def generate_song_recommendations(xp):
       pass
     else:
       xt.append(i)
-  hh = [xt[:10],xt[10:]]
+#  hh = [xt[:10],xt[10:]]
 
   
   return g 
@@ -54,7 +54,7 @@ def index():
 def recommendations():
     book_name = request.form["book_name"]
     reco = generate_song_recommendations(book_name)
-    return render_template("reco.html", reco=reco)
+    return render_template("reco2.html", reco=reco)
 
 def start_server():
   app.run(host='0.0.0.0',port=8080)

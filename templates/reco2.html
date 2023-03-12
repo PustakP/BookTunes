@@ -18,19 +18,54 @@
   <link rel="stylesheet" href="/static/css/main.css">
 
   <meta name="theme-color" content="#fafafa">
+ <style>
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700&family=Ubuntu:wght@700&display=swap');
+
+p{
+    color: #FFFFFF;
+    font-family: Red Hat Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top:0px;
+    padding-left:20vh;
+}
+
+       button {
+      display: block;
+      margin-top: 3rem;
+      outline: none;
+      border: none;
+      height: 34px;
+      width: 50%;
+      background-color: #6B4BEA;
+      color: #fff;
+      font-family: Red Hat Display;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      transform: translateY(-0.25em);
+    
+  </style>
+
 </head>
 
 <body class="fade-in one">
 
   <!-- Add your site or application content here -->
-  <h1>Don't settle for silence while you read - let us curate the perfect background music <br>for you.</h1>
-  <form method="post" action="/recommendations">
-    <div class="form-group">
-    
-    <input class="form-field" type="text" placeholder="Book" id="book_name" name="book_name">
-    <input type="submit" class="form__button" value="Curate">
-     
-  </div> </form>
+  <h1>Here you go !</h1> <br> <br>
+{% for item in reco %}
+<p style="text-align: left;">{{ item }}</p>
+{% endfor %}
+
+  <br>
+  <center><button onClick="location.href='/'">Another One ?</button></center>
     <script src="/static/js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="/static/js/plugins.js"></script>
   <script src="/static/js/main.js"></script>
