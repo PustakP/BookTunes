@@ -7,7 +7,6 @@ html {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top:7%;
   padding-left: 10%;
   padding-right: 10%;
   background-color: #171531;
@@ -153,27 +152,27 @@ padding: 20px;
         outline: none;
         border: 2px solid #453C71;
     }
-    .form__button {
-      display: block;
-      margin-top: 3rem;
-      outline: none;
-      border: none;
-      height: 69px;
-      width: 50%;
-      background-color: #6B4BEA;
-      color: #fff;
-      font-family: Red Hat Display;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 36px;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .form__button:hover {
-      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-      transform: translateY(-0.25em);
-    }
+    button {
+        display: block;
+        margin-top: 3rem;
+        outline: none;
+        border: none;
+        height: 34px;
+        width: 70%;
+        background-color: #6B4BEA;
+        color: #fff;
+        font-family: Red Hat Display;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+        padding: 0px 10px 0px 10px;
+      }
+      button:hover {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        transform: translateY(-0.25em);
     /* make keyframes that tell the start state and the end state of our object */
 @-webkit-keyframes fadeIn {
   from {
@@ -211,17 +210,12 @@ padding: 20px;
   animation-delay: 0.2s;
 }
 
-.my-checkbox {
-  transform: scale(1.2);
-  margin-right: 11px;
+.fade-in.two {
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s;
 }
-span{
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-size: 1.2rem;
-    font-weight: 500;
-    color: #88879C;
-}
-.line{
-  margin:1.2rem;
+
+.fade-in.three {
+  -webkit-animation-delay: 1.7s;
+  animation-delay: 1.7s;
 }
