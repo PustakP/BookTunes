@@ -211,12 +211,17 @@ padding: 20px;
   animation-delay: 0.2s;
 }
 
-.fade-in.two {
-  -webkit-animation-delay: 0.7s;
-  animation-delay: 0.7s;
+.my-checkbox {
+  transform: scale(1.2);
+  margin-right: 11px;
 }
-
-.fade-in.three {
-  -webkit-animation-delay: 1.7s;
-  animation-delay: 1.7s;
+span{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-size: 1.2rem;
+    font-weight: 500;
+    color: #88879C;
+}
+.line{
+  margin:1.2rem;
 }
