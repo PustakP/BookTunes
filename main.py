@@ -58,7 +58,7 @@ def generate_song_recommendations(xp, c):
       xt.append(i)
 
 
-  hh = [xt[:10],xt[10:]]
+#  hh = [xt[:10],xt[10:]]
 
   print(g)
   return g
@@ -173,7 +173,7 @@ def get_spotify_url(song_names, artist_names):
 # Define Flask routes
 @app.route("/")
 def index():
-  return render_template("index.html")
+  return render_template("index2.html")
 
 
 @app.route("/recommendations", methods=["POST"])
