@@ -175,6 +175,9 @@ def get_spotify_url(song_names, artist_names):
 def index():
   return render_template("index2.html")
 
+@app.errorhandler(500)
+def error():
+  return render_template("500.html")
 
 @app.route("/recommendations", methods=["POST"])
 def recommendations():
