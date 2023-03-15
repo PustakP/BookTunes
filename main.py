@@ -1,6 +1,6 @@
 import os
 from threading import Thread
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import openai
 
 import spotipy
@@ -17,9 +17,11 @@ openai.api_key = my_secret
 
 
 # Define function to generate song recommendations based on book name
-def generate_song_recommendations(xp):
-  pp = 'Could you please make me a list of songs which match the vibe of the book "' + xp + '"?'
-
+def generate_song_recommendations(xp, c):
+  if c == 0:
+    pp = 'Could you please make me a list of 10 songs which match the vibe of the book "' + xp + '"?'
+  else:
+    pp = 'Could you please make me a list of 10 hindi songs which match the vibe of the book "' + xp + '"?'
   xx = openai.ChatCompletion.create(model="gpt-3.5-turbo",
                                     messages=[
                                       {
@@ -62,7 +64,7 @@ def generate_song_recommendations(xp):
   return g
 
 
-def recoclean1(r):
+def recoclean2(r):
   cg = []
   for i in r:
     if i == '':
@@ -72,7 +74,45 @@ def recoclean1(r):
 
   if len(cg) > 9:
     cg = cg[:-1]
+  else:
+    cg = cg
   return cg
+
+
+def recoclean1(r):
+  cg = []
+  for i in r:
+    if i == '':
+      pass
+    else:
+      cg.append(i)
+  return cg
+
+
+'''  if len(cg) > 9:
+    cg = cg[:-1]
+  else: 
+    cg = cg'''
+
+
+def recoorg2(xt):
+  song_names = []
+  artist_names = []
+
+  for song in xt:
+    if xt == '':
+      pass
+    # split each item into song name and artist name
+    split_song = song.split(" - ")
+    #    print(split_song)
+    song_name = split_song[0].split(". ")[1]
+    print(split_song)
+    artist_name = split_song[1]
+
+    # append to respective lists
+    song_names.append(song_name.strip('"'))
+    artist_names.append(artist_name)
+  return [song_names, artist_names]
 
 
 def recoorg(xt):
@@ -80,8 +120,11 @@ def recoorg(xt):
   artist_names = []
 
   for song in xt:
+    if xt == '':
+      pass
     # split each item into song name and artist name
     split_song = song.split(" by ")
+ #   print(split_song)
     song_name = split_song[0].split(". ")[1]
     artist_name = split_song[1]
 
@@ -91,14 +134,23 @@ def recoorg(xt):
   return [song_names, artist_names]
 
 
+def dec(xt):
+  for l in xt:
+    if " by " in l:
+      return recoorg(xt)
+    else:
+      return recoorg2(xt)
+
+
 def get_spotify_url(song_names, artist_names):
   cc = []
   #Authentication - without user
-  client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=csecret, cache_handler=cache_handler)
+  client_credentials_manager = SpotifyClientCredentials(
+    client_id=cid, client_secret=csecret, cache_handler=cache_handler)
   sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
   for i in range(len(song_names)):
-    
+
     try:  # Precise Search
       #        print("artist:"+artist_names[i]+" track:"+song_names[i])
       results = sp.search(q="artist:" + artist_names[i] + " track:" +
@@ -121,19 +173,54 @@ def get_spotify_url(song_names, artist_names):
 # Define Flask routes
 @app.route("/")
 def index():
-  return render_template("index.html")
+  return render_template("index2.html")
 
 
 @app.route("/recommendations", methods=["POST"])
 def recommendations():
   book_name = request.form["book_name"]
-  reco = generate_song_recommendations(book_name)
-  gf = recoorg(recoclean1(reco))
-  gt = get_spotify_url(gf[0], gf[1])
-  print(gt)
-  return render_template("recospot.html", reco=gt)
+  if book_name:
+
+    reco = generate_song_recommendations(book_name, 0)
+    gf = dec(recoclean2(reco))
+    gt = get_spotify_url(gf[0], gf[1])
+    print(gt)
+    return render_template("recospot.html", reco=gt)
+  else:
+    return redirect("https://song.pustak.me", code=302)
 
 
+@app.route("/recohindi", methods=["POST"])
+def recohindi():
+  book_name = request.form["book_name"]
+  if book_name:
+
+    reco = generate_song_recommendations(book_name, 1)
+    gf = dec(recoclean2(reco))
+    print(gf)
+    gt = get_spotify_url(gf[0], gf[1])
+    print(gt)
+    return render_template("recospot.html", reco=gt)
+  else:
+    return redirect("https://song.pustak.me", code=302)
+
+    # Show the spinner while we generate the song recommendations
+
+
+#    return """
+  '''      <html>
+            <head>
+                <title>Loading...</title>
+            </head>
+            <body>
+                <div id="loading-spinner">
+                    <i class="fa fa-spinner fa-spin"></i> Generating song recommendations...
+                </div>
+                <script src="/static/js/main.js"></script>
+            </body>
+        </html>
+    """
+'''
 '''@app.route("/recommendations", methods=["POST"])
 def recommendations():
     book_name = request.form["book_name"]

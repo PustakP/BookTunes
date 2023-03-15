@@ -15,27 +15,39 @@
   <link rel="manifest" href="/static/favicons/site.webmanifest">
 
   <link rel="stylesheet" href="/static/css/normalize.css">
-  <link rel="stylesheet" href="/static/css/reco.css">
+  <link rel="stylesheet" href="/static/css/main.css">
 
   <meta name="theme-color" content="#fafafa">
-
-
 </head>
 
 <body class="fade-in one">
+<body class="fade-in one">
+  <script type="text/javascript">
+    function get_action() {
+        var form = document.forms.major;
+        if (form.minor.checked) {
+          form.action = '/recohindi';
+        } else {
+          form.action = '/recommendations';
+        }
+    }
+  </script>
 
   <!-- Add your site or application content here -->
-  <h1>Here you go !</h1> <br> <br>
-{% for item in reco %}
-<p style="text-align: left;">{{ item }}</p>
-{% endfor %}
-
-  <br>
-  <center><button onClick="location.href='/'">Another One ?</button></center>
+  <h1>Don't settle for silence while you read - let us curate the perfect background music <br>for you.</h1>
+  <form name="major" method="post" onsubmit="get_action();">
+    <div class="form-group">
+      <input class="form-field" type="text" placeholder="Book" id="book_name" name="book_name">
+      <div class="line">
+        <input name="minor" type="checkbox" class="my-checkbox" value="1" />
+        <span>Want hindi instead?</span>
+      </div>
+      <input type="submit" class="form__button" value="Curate">
+    </div>
+  </form>
     <script src="/static/js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="/static/js/plugins.js"></script>
   <script src="/static/js/main.js"></script>
 </div>
 </body>
-
 </html>
