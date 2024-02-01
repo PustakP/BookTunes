@@ -1,6 +1,3 @@
-Certainly! Here's a README.md for your "BookTunes" project:
-
-```markdown
 # BookTunes 📚🎶
 
 Reading by yourself ever feel a bit too quiet? BookTunes is here to help you out with a personalized playlist made especially for your book (and you ❤️).
