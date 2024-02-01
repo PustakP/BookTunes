@@ -61,6 +61,3 @@ Contributions are welcome! If you have any ideas, suggestions, or find any issue
 This project is licensed under the [MIT License](LICENSE).
 
 Happy Reading and Happy Listening! 📖🎧
-```
-
-Feel free to customize it further based on your preferences and additional information about your project!
