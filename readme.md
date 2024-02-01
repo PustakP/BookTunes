@@ -29,7 +29,7 @@ export csecret=your_spotify_client_secret
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/BookTunes.git
+git clone https://github.com/PustakP/BookTunes.git
 cd BookTunes
 ```
 
@@ -42,7 +42,7 @@ pip install -r requirements.txt
 3. Run the application:
 
 ```bash
-python your_app_file.py
+python main.py
 ```
 
 4. Open your browser and go to [http://localhost:8080](http://localhost:8080)
