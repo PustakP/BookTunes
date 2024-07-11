@@ -1,5 +1,4 @@
 import os
-from threading import Thread
 from flask import Flask, render_template, request, redirect
 import openai
 
@@ -229,9 +228,5 @@ def recommendations():
     return render_template("reco2.html", reco=reco)'''
 
 
-def start_server():
-  app.run(host='0.0.0.0', port=8080)
-
-
-t = Thread(target=start_server)
-t.start()
+if __name__ == '__main__':
+    app.run()
